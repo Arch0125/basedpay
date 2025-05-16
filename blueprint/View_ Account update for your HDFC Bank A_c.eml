@@ -1,0 +1,301 @@
+Delivered-To: dasarchisman25@gmail.com
+Received: by 2002:a05:622a:1a0b:b0:472:1456:7aa6 with SMTP id f11csp2159233qtb;
+        Thu, 15 May 2025 12:02:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFT2hoZof9/1tc3Exj3KfNfDqAXnNl+uoKRFlo7yK6eL6t/v7jiNkGizv1FCvczlDsSJ+Zc
+X-Received: by 2002:a05:6a21:9012:b0:216:19c1:1f54 with SMTP id adf61e73a8af0-2162188b866mr874711637.4.1747335749918;
+        Thu, 15 May 2025 12:02:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747335736; cv=none;
+        d=google.com; s=arc-20240605;
+        b=e1j6/2dXvmehXrobcjtelKwsryNcgczs9d2Ye18Oo5UemywBPlU+dTTj8ucNlXysSL
+         Re1ZjkXCNAhtAH1TqRg0q/MFaR6jhiQlUsUfYKlcBXnbfUh5I8rd6D+HC222hzLg2GRA
+         2qvdpNdBsz3Q40tQJq4zvqmuaSP2dhA2VlJL6uqeRcL7oUDDaolLpHuxBrNYUey0NUGP
+         tKHsunsYGDlPFGZdMKvQxpQcHeVQpXSQTBb1B1b/7bG+XGxRWsG0+Bh1t8N8hvqGg9kE
+         Er4zpIEcwstizqyLocR4KNPbun+H8wNcFzdnCleUnkRTwCt9eek34pUlWSc4P5G3K+0p
+         6HVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=date:from:subject:mime-version:to:dkim-signature:dkim-signature
+         :message-id;
+        bh=NuH7BFtXw8Pm5RQcfLb3ieUNXf6yf3Vror4g+EPQ64w=;
+        fh=TRuOSxOGYk6JnAuEE/3/Pm7EOsWdpwyjJ3JtzJR4e0I=;
+        b=S/knMCAWCZc3tsDKbpASZo9o125pl3LM9MIii3IiewG4ZPrUst6Z76RcuD+4kVVI0/
+         WYoXSUIL9oPDickjnMK6IXVpJ8eAqeexz/yY3YZ7z/G7EePi9IdQSZMmL7Llfv1JziTz
+         q502rk+6u69O0fCdhqEWsE/M/jU5qx3ZmDHCRZshWh9LwakTFm34zneLakIB3hZL/2EL
+         Lar9+dU7XZMmukT0aY3+1k3wJSYuCmy6vIxhe0bZJrEyhxiaJR0rUgUG7UYjkdcCiAxH
+         o8gcrgFdA2ui7cc0yuwvlEYmVlPGx84CCUFa5DdnZRoaJYxcV3yqakWDbpxldFiZzW32
+         RgNA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@hdfcbank.net header.s=acls01 header.b=IottoQ3S;
+       dkim=pass header.i=@aclmobile.net header.s=5nXKKHgBnyGAcLwvMLZIq header.b=a6aiLo7K;
+       spf=pass (google.com: domain of a.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net designates 103.54.236.11 as permitted sender) smtp.mailfrom=A.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=hdfcbank.net
+Return-Path: <A.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net>
+Received: from o11.smtp-out.aclmobile.net (o11.smtp-out.aclmobile.net. [103.54.236.11])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b26eb09dfcdsi383320a12.483.2025.05.15.12.02.16
+        for <DASARCHISMAN25@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 May 2025 12:02:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of a.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net designates 103.54.236.11 as permitted sender) client-ip=103.54.236.11;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@hdfcbank.net header.s=acls01 header.b=IottoQ3S;
+       dkim=pass header.i=@aclmobile.net header.s=5nXKKHgBnyGAcLwvMLZIq header.b=a6aiLo7K;
+       spf=pass (google.com: domain of a.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net designates 103.54.236.11 as permitted sender) smtp.mailfrom=A.1747335735988935791.21923.1156.1.1.0.0.1@comm.hdfcbank.net;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=hdfcbank.net
+Message-ID: <68263a38.650a0220.9485.e2c7SMTPIN_ADDED_BROKEN@mx.google.com>
+X-Google-Original-Message-ID: A.1747335735988935791.21923.1156.1.1.0.0.1#DASARCHISMAN25@GMAIL.COM
+DKIM-Signature: v=1; a=rsa-sha256; d=hdfcbank.net; s=acls01; c=relaxed/relaxed;
+	bh=NuH7BFtXw8Pm5RQcfLb3ieUNXf6yf3Vror4g+EPQ64w=;
+	h=content-type:message-id:subject:date:mime-version:to:from; t=1747335735;
+	b=IottoQ3SpMhalRdqnWMQVPUr6ObwNELk6QROjhC+THwHxmB1DEHTYn5tOeQJ9j21roVM71AWr
+	5Pa1FCffWCnTGTemkRWuel3tivS04Q/8onjsJzBl1WfaNdD5ipTWCKNenHSnzKw9N8vOB/mFCA8
+	TFM6QFTDLC5tswupglkD80PZfkmdviwCi+n0zwgcqmL6PSErD9siy1MgH+9Q1tAgKTmfUOl+1Tw
+	TlwEgDup+LIlo2tF3ugcB02lqCotRGHrdm5YkH5/9HwPaTiv5whygFnVlfUyyqKSZZjSW5iAdIH
+	5PSqUyXmn8I+3DANYAB5SWht7sIMe7dwudGrtntcOtpw==;
+DKIM-Signature: v=1; a=rsa-sha256; d=aclmobile.net; s=5nXKKHgBnyGAcLwvMLZIq;
+	c=relaxed/relaxed; bh=NuH7BFtXw8Pm5RQcfLb3ieUNXf6yf3Vror4g+EPQ64w=;
+	h=content-type:message-id:subject:date:mime-version:to:from; t=1747335735;
+	b=a6aiLo7K3cNzrAE61O7bMVbzd12nofrPfAgUD8vcezEtK23P1v8t9Thlx9TdNsfAZv708boWu
+	G2BpqGf9ATAELdEkiMCYT2cIbvwnDHg9g+sHHPs3C/hUBEHYz8DokvucqVurZx7rieJiM8lonEa
+	yR1+0hFSImzgSLsmFe5s51dR5ALBDp18IAf4MFvP9UNhPzLUOEuaIhDpUxH1JfyvYO7Uhye2Av1
+	tOXhpdCQqAPTiFOM1rXsfUQnPz8vAEcOLNmDnHYRbS040o5urGa6yj61SwyI6w7iQww7Fti3fEZ
+	F62krhiT/4p/XxcN9QT2+NzHh2AJq0TWu9yeXRBaEpZA==;
+X-Ses-Configuration-Set: hdfc-c
+To: DASARCHISMAN25@GMAIL.COM
+Mime-Version: 1.0
+Subject: View: Account update for your HDFC Bank A/c
+From: HDFC Bank InstaAlerts <alerts@hdfcbank.net>
+Date: Fri, 16 May 2025 00:32:15 +0530
+X-Unique-Id: A.1747335735988935791.21923.1156.1.1.0.0.1#DASARCHISMAN25@GMAIL.COM#{"divid":"UPIALRT","msgid":"DASARCHISMAN25@GMAIL.COM0516003215973"}
+X-Apiheader: A.1747335735988935791.21923.1156.1.1.0.0.1#DASARCHISMAN25@GMAIL.COM
+Content-Type: multipart/alternative;
+ boundary=e94f358a1ddacd9dadb4d64b480c7419e049059b19fb35c513dc153f2202
+
+--e94f358a1ddacd9dadb4d64b480c7419e049059b19fb35c513dc153f2202
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <meta name=3D"viewport" content=3D"target-densitydpi=3Ddevice-dpi">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width; initial-scale=
+=3D1.0; maximum-scale=3D1.0; user-scalable=3D0;">
+    <meta name=3D"apple-mobile-web-app-capable" content=3D"yes">
+    <meta name=3D"HandheldFriendly" content=3D"true">
+    <meta name=3D"MobileOptimized" content=3D"width">
+    <title>HDFC BANK</title><!-- Facebook sharing information tags -->
+    <!--<meta property=3D"og:title" content=3D"HDFC BANK" />-->
+    <style type=3D"text/css">
+        @media screen and (min-device-width: 320px) and (max-device-width: =
+768px) {
+            table {
+                width: 100%;
+            }
+
+            .td {
+                padding: 0px 25px;
+                text-align: left;
+            }
+
+            .heading {
+                text-align: center;
+                padding: 0px 25px;
+            }
+
+            .cta {
+                padding: 0px 25px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-loaded=3D"14.1101.0">
+    <table width=3D"600" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" a=
+lign=3D"center">
+        <tbody>
+			  <tr>
+                <td style=3D"border-bottom:1px solid #cccccc; border-top:1p=
+x solid #cccccc; border-left:1px solid #cccccc;border-right:1px solid #cccc=
+cc;">
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0">
+                        <tbody>
+                            <tr>
+                                <td valign=3D"top" bgcolor=3D"#dcddde" styl=
+e=3D"line-height:0px;background-color:#dcddde; border-left:1px solid #dcddd=
+e;"><a href=3D"https://trkt.aclmails.in/v1/r/mZXl2ynsNycqOLmUhvZWqQOwhU9kSl=
+T8fJyQte1vIDbjf1VZr2oczO%2BJ0e4RBi97AIMVbuaeE0Wmu6RaRT9e5tkhxo44z0oFioB6q7C=
+N5paYmRN4%2FIeSfx7kIB24kiOP0fWIM2TRW%2Bgred5ugg41c2o4JRatlh8vxJlKQ7v5kK1vVE=
+scZe%2Fi0OemsPjzbVZz6E2hpTYH%2BYpyDLupMu%2FJ2eTuEbpNdVxrhmJpObwGrQP4uTKlov6=
+dz3Nh8n5XkVNlVnuUKi56rJNOhEiccbaupibEKnVrU2QdVQ5SvR6tDM1um6F%2FgUX4U7TcYCf6=
+Bg%2B2AWW2L3Jo1Kikhf0pySJwOL9x6txpt3u%2BXqOKY80GvoQYwuFHwqEtt3zf5Gq2TTwNQf7=
+grooHTkjcvxXw" target=3D"_blank"><img src=3D"https://img.pinchappmails.com/=
+hdfc/images/2024/march/D3.jpg" style=3D"display: block; vertical-align: top=
+" alt width=3D"100%" border=3D"0"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height=3D"20"></td>
+            </tr>
+            <tr>
+                <td valign=3D"top" bgcolor=3D"#dcddde" style=3D"line-height=
+:0px;background-color:#dcddde; border-left:1px solid #dcddde;"><img src=3D"=
+https://wgjpss.stripocdn.email/content/guids/CABINET_d17330eb5cbe5af68cf444=
+e0d9b181ad116d88b22fb8b3fd1c93e1846c59af76/images/nmbandnew.jpg" alt width=
+=3D"100%" border=3D"0"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0">
+                        <tbody>
+                            <tr>
+                                <td valign=3D"top" align=3D"center">
+                                    <table align=3D"center" width=3D"550" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+                                        <tbody>
+                                            <tr>
+                                                <td width=3D"550" valign=3D=
+"top" align=3D"center">
+                                                    <table align=3D"center"=
+ width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"w=
+idth:100% !important; text-align: center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td height=
+=3D"15"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width=3D"100%" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0">
+                        <tbody>
+                            <tr>
+                                <td valign=3D"top" align=3D"center">
+                                    <table align=3D"center" width=3D"550" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+                                        <tbody>
+                                            <tr>
+                                                <td width=3D"550" valign=3D=
+"top" align=3D"center">
+                                                    <table align=3D"center"=
+ width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"w=
+idth:100% !important; text-align: center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td height>=
+</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align=
+=3D"left" valign=3D"middle" style=3D"font-family:Arial; font-size:16px; lin=
+e-height:22px; color:#000; font-weight: normal; text-align: left" class=3D"=
+td esd-text">Dear Customer,
+Rs. 1.00 is successfully credited to your account **0178 by VPA 7003366576@=
+ybl Archisman  Das on 16-05-25.
+Your UPI transaction reference number is 245078850644.
+Thank you for banking with us.
+Warm Regards,
+HDFC Bank
+
+
+
+</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height=
+=3D"25"></td>
+                                                            </tr>
+															<tr>
+                                                                <td align=
+=3D"left" valign=3D"middle" style=3D"font-family:Arial; font-size:16px; lin=
+e-height:22px; color:#000; font-weight: normal; text-align: left" class=3D"=
+td esd-text">
+</td>
+                                                            </tr>
+                                                          =20
+                                                            <tr>
+                                                                <td height=
+=3D"25"></td>
+                                                            </tr>
+															<tr>
+                                                                <td align=
+=3D"left" valign=3D"middle" style=3D"font-family:Arial; font-size:16px; lin=
+e-height:22px; color:#000; font-weight: normal; text-align: left; border-bo=
+ttom: 2px solid #cccccc; padding-bottom: 0px" class=3D"td esd-text"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height=
+=3D"15"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+          <tr>
+                <td valign=3D"top"  style=3D"line-height:0px; border-left:0=
+px solid #dcddde; padding-bottom: 5px"><img src=3D"https://img.pinchappmail=
+s.com/hdfc/images/2024/july/Footerbanner_NEW_Aug.jpg" alt width=3D"100%" bo=
+rder=3D"0"></td>
+            </tr>
+           =20
+            <tr>
+                <td style=3D"font-family:Arial,Helvetica,sans-serif;color:#=
+000000;padding-bottom:5px;padding-top:5px;text-align:left;font-size:0.5rem;=
+border:none;line-height:12px;padding-left:15px;padding-right:15px" align=3D=
+"left" class=3D"esd-text">For more details on Service charges and Fees, <a =
+href=3D"https://trkt.aclmails.in/v1/r/h9ZChbrImCQvpgEDLdv3jXM3faWGvZv%2FkSW=
+NWGNnkdbqE8IXr4lq1U6LGCRjX4CZIX2mNjThFZwUC0lbEqhgJB8bwD4fQJXOP0gLyIBKmWenAx=
+QcbLP2VDxCHaWDSLLoJWd4d3O%2F5Lqcd5rLdH9uL4kMv5AraV47J1soVwJx9z7702jjHs8juHA=
+wEuSSVhlSbOCiHWL2rrMKPTs6iItGn8eWlgyKxD1rHmYQ1K8tQeh6fo7hQ1iR9zXuXrumCgXUPK=
+%2Fw%2FTp85SdWZTjLgGcH0vGyaCrsZ7QugA1Ia2LWejDol2a0xF5BAOakqkGQCQ%3D%3D" sty=
+le=3D"text-decoration:underline;color:#004b8d;outline:none" target=3D"_blan=
+k"><strong> click here.</strong></a></td>
+            </tr>
+           =20
+           =20
+            <tr>
+                <td style=3D"font-family:Arial,Helvetica,sans-serif;color:#=
+000000;text-align:left;font-size:0.5rem;border:none;padding-left:15px" alig=
+n=3D"left" width=3D"30%" class=3D"esd-text">=C2=A9 HDFC Bank <span style=3D=
+"font-size: 3px"></span></td>
+            </tr>
+			 =20
+          =20
+        </tbody>
+    </table>
+</body>
+
+</html><img src=3D"https://trkt.aclmails.in/v1/w/9HXk%2F7yQ714xWwswTjY%2BQ%=
+2FucuWjkm1VHIfYI9vStfx0D6YdoyrP5HldII6STumAbT4E%2FWfn3DZ3hqvvNYHH%2BGC85xpy=
+x2NhDDflbSvKSqrDXsiymlwcuOuJG7eWFtx8Ght2NyXqaFIH2MtIEqW91WmQuCPes1B4CFBpZnd=
+tq7SgGMuOL8%2B3zu%2FrFSe2wHj0ySfaopRdlLvuHF1MZmJBtGE7qTXuAU4o4Hss%3D"  widt=
+h=3D"1" height=3D"1" border=3D"0">
+--e94f358a1ddacd9dadb4d64b480c7419e049059b19fb35c513dc153f2202--

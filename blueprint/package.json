@@ -1,0 +1,15 @@
+{
+  "name": "blueprint",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@zk-email/sdk": "^0.0.133",
+    "node-imap": "^0.9.6"
+  }
+}
