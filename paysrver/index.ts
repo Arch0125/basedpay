@@ -41,7 +41,7 @@ async function getUsdcPerInr() {
 // 2) wait for the user to send exactly (or at least) `amount` USDC
 async function waitForDeposit(fromAddress: string, minAmount: string | number) {
     // start scanning from the latest block
-    let fromBlock = 25836273;
+    let fromBlock = 25847300;
   
     // precompute topics
     const transferTopic = ethers.id("Transfer(address,address,uint256)");
