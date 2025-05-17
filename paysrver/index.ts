@@ -39,29 +39,41 @@ async function getUsdcPerInr() {
 }
 
 // 2) wait for the user to send exactly (or at least) `amount` USDC
-async function waitForDeposit(fromAddress: any, minAmount: string | number) {
-    let block = await provider.getBlockNumber();
+async function waitForDeposit(fromAddress: string, minAmount: string | number) {
+    // start scanning from the latest block
+    let fromBlock = 25836273;
+  
+    // precompute topics
+    const transferTopic = ethers.id("Transfer(address,address,uint256)");
+    const fromTopic     = "0x000000000000000000000000c395bcab78eca2e43bf2e7095ba312483a607f51";
+    const toTopic       = '0x0000000000000000000000001547ffb043f7c5bde7baf3a03d1342ccd8211a28';
   
     while (true) {
-      // fetch any matching logs since our last block
-      const logs = await provider.getLogs({ fromBlock: 25833653, toBlock: "latest" });
-      for (let log of logs) {
-        const parsedLog = usdc.interface.parseLog(log);
-        if (!parsedLog) continue;
-        const { args } = parsedLog;
-        if ((args.value >= minAmount) && args.to === TARGET_ADDRESS && args.from === fromAddress) {
-            console.log("Deposit confirmed:", {
-                from: args.from,
-                to: args.to,
-                amount: args.value.toString(),
-            });
+      // fetch only USDC Transfer logs from `fromAddress` → `TARGET_ADDRESS`
+      const logs = await provider.getLogs({
+        address:   USDC_ADDRESS,
+        topics:    [transferTopic, fromTopic, toTopic],
+        fromBlock,
+        toBlock:   "latest"
+      });
+  
+      for (const log of logs) {
+        const parsed = usdc.interface.parseLog(log);
+        const { args } = parsed;
+        // args.value is a BigNumber
+        if (args.value >= minAmount) {
+          console.log("Deposit confirmed:", {
+            from:   args.from,
+            to:     args.to,
+            amount: args.value.toString(),
+          });
           return log;
         }
       }
   
-      // advance the block cursor so we don’t re-scan
-      block = (await provider.getBlockNumber()) + 1;
-      await new Promise(r => setTimeout(r, 5_000));  // wait 5s
+      // move cursor forward so we don't re-scan old blocks
+      fromBlock = (await provider.getBlockNumber()) + 1;
+      await new Promise(r => setTimeout(r, 5_000));
     }
   }
   
@@ -103,21 +115,23 @@ async function payInrToUpi(upiId: string | null, amountInr: number) {
 
 
 // 4) rebuild the original UPI intent URI
-function buildUpiIntent(params: { [s: string]: unknown; } | ArrayLike<unknown>) {
-  const url = new URL("upi://pay");
-  Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, v));
-  return url.toString();
-}
+function buildUpiIntent(params: Record<string,string|null>) {
+    const parts: string[] = [];
+    for (const [k, v] of Object.entries(params)) {
+      if (v) parts.push(`${k}=${v}`);
+    }
+    return `phonepe://pay?${parts.join("&")}`;
+  }
+  
 
 // ─── ROUTE ────────────────────────────────────────────────────────────────────
-app.post("/process-upi", async (req: { body: { upiIntent: any; userEthAddress: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { status: string; usdcAmount: any; target: string | undefined; }): void; new(): any; }; }; }) => {
+app.post("/process-upi", async (req: { body: { upiIntent: any; userEthAddress: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { status: string; upiintent: string; }): void; new(): any; }; }; }) => {
   try {
     // a) client sends their UPI intent and their wallet address
     const { upiIntent, userEthAddress } = req.body;
     const uri = new URL(upiIntent);
     const upiParams = {
       pa: uri.searchParams.get("pa"),
-      pn: uri.searchParams.get("pn"),
       am: uri.searchParams.get("am"),
       cu: uri.searchParams.get("cu"),
     };
@@ -128,14 +142,6 @@ app.post("/process-upi", async (req: { body: { upiIntent: any; userEthAddress: a
     console.log("1 USDC = ",1/rate, " INR");
     const amount = (inrAmount * rate * 1e6).toFixed(0);
     console.log("Amount in USDC: ", amount);
-    
-
-    // c) tell client how much USDC & where to send
-    res.status(202).json({
-      status: "pending_deposit",
-      usdcAmount: amount,
-      target: TARGET_ADDRESS
-    });
 
     // d) now wait for on-chain deposit
     await waitForDeposit(userEthAddress, amount);
@@ -149,10 +155,22 @@ app.post("/process-upi", async (req: { body: { upiIntent: any; userEthAddress: a
     console.log("✅ Deposit confirmed. Now invoke:");
     console.log(buildUpiIntent(upiParams));
 
+    // g) send a response back to the client
+    res.status(200).json({
+      status: "success",
+      upiintent: buildUpiIntent(upiParams),
+    });
+
   } catch (e) {
     console.error(e);
   }
 });
+
+app.get("/upi-redir", (req, res) => {
+    const upi = req.query.uri as string;
+    if (!upi) return res.status(400).send("Missing uri");
+    res.redirect(upi);
+  });
 
 // start
 const PORT = process.env.PORT || 3000;
